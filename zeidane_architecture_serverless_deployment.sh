@@ -124,5 +124,5 @@ chmod +x cronjob/delete_old_file.sh
 crontab -l > mycron
 echo "00 03 * * *  bash cronjob/delete_old_file.sh" >> mycron
 crontab mycron
-
+rm mycron
 echo 'Les données doivent être disponible dans BigQuery.'
