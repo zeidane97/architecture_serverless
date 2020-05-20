@@ -33,7 +33,7 @@ Avant son exécution si c’est la première fois vous déployer une application
 
 -	Ajouter des règles IAM aux utilisateurs en écriture uniquement, sans être en mesure de supprimer des fichiers ni accéder aux autorisations :
 
-       gsutil iam ch user:’your user mail’:roles/storage.objectCreator gs://staging-area-$DEVSHELL_PROJECT_ID 
+      gsutil iam ch user:’your user mail’:roles/storage.objectCreator gs://staging-area-$DEVSHELL_PROJECT_ID 
 
 Remplacer ‘your user mail’ par l’adresse de votre utilisateur
 
