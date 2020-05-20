@@ -115,12 +115,9 @@ bq mk worldcountry.country schema.json
 #Ajoutons le fichier sample.csv pour tester le fonctionnement : 
 gsutil cp sql-pays.csv gs://staging-area-$DEVSHELL_PROJECT_ID
 
-#Ajoutons le fichier sample.csv pour tester le fonctionnement : 
-gsutil cp sample.csv gs://staging-area-$DEVSHELL_PROJECT_ID
-
 #Les données doivent être disponible dans BigQuery
 #Partie 4 : Deploiement de la fonction delete qui permet de supprimer les fichiers 
-cd ..
+cd ../..
 mkdir cronjob
 cp delete_old_file.sh cronjob/
 chmod +x cronjob/delete_old_file.sh
