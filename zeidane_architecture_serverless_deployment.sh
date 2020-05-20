@@ -72,8 +72,6 @@ gsutil iam ch serviceAccount:$service_account:roles/storage.objectCreator gs://s
 gsutil iam ch serviceAccount:$service_account:roles/storage.objectCreator gs://sain-files-$DEVSHELL_PROJECT_ID
 
 #Créer une fonction Cloud pour déclencher le service de détection de logiciels malveillants
-cd ../function-scantrigger-node
-
 #Déployez la fonction en remplaçant https://malware-scanner-dot-PROJECT_ID.appspot.com par l'URL de service que vous avez copiée précédemment.
 gcloud functions deploy requestMalwareScan \
     --runtime nodejs8 \
@@ -90,7 +88,6 @@ echo "am not a corrupt file and you???" > RightFile.txt
 gsutil cp RightFile.txt gs://staging-area-$DEVSHELL_PROJECT_ID/
 
 #Créons cette fois si un fichier corrompu :
-
 #L’Institut européen pour EICAR a développé le fichier de test anti-malware EICAR. Le fichier de test EICAR est un 
 #programme DOS légitime qui est détecté comme logiciel malveillant par un logiciel antivirus.
 
@@ -122,6 +119,13 @@ gsutil cp sql-pays.csv gs://staging-area-$DEVSHELL_PROJECT_ID
 gsutil cp sample.csv gs://staging-area-$DEVSHELL_PROJECT_ID
 
 #Les données doivent être disponible dans BigQuery
-#Partie 4 : Deploiement de la fonction delete qui permet de supprimer les fichiers après 24 h (voir doc)
+#Partie 4 : Deploiement de la fonction delete qui permet de supprimer les fichiers 
+cd ..
+mkdir cronjob
+cp delete_old_file.sh cronjob/
+chmod +x cronjob/delete_old_file.sh
+crontab -l > mycron
+echo "00 03 * * *  bash cronjob/delete_old_file.sh" >> mycron
+crontab mycron
 
-echo 'Les données doivent être disponible dans BigQuery. Deploiement de la fonction delete qui permet de supprimer les fichiers après 24 h (voir doc)'
+echo 'Les données doivent être disponible dans BigQuery.'
