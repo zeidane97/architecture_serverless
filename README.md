@@ -7,6 +7,8 @@ Ce projet contient des sous répertoires qui permettent de générer un workflow
 -	Envoie automatique des fichiers CSV non corrompus dans la base de données Bigquery
 -	Mise à disposition d’une base de données évolutive et automatiquement mis à jour 
 -	Enregistrement des logs d’accès aux données dans un compartiment GCS
+
+
 Durant le déploiement de cette solution, nous utiliserons les services google suivant : 
 -	AppEngine pour le déploiement de notre antivirus scanneur 
 -	Google Cloud Storage pour le stockage de nos fichiers et nos artifact contenant l’environnement complet y compris tous les outils et dépendances nécessaires. 
@@ -20,17 +22,14 @@ Le déploiement de cette architecture est automatique et se fait comme suit :
 Le script zeidane_architecture_serverless_deployment.sh contient les étapes de déploiement de notre environnement gcp .
 Avant son exécution si c’est la première fois vous déployer une application app Engine, modifié l’entrée dans le script : 
 
-	sed -i -e "s/malware-scanner/default/g" \ 
-	appengine-malwarescanningservice-node/app.yaml
+	sed -i -e "s/malware-scanner/default/g" appengine-malwarescanningservice-node/app.yaml
 
 -	Donner les droits d’exécution au script et exécuter 
-	chmod + zeidane_architecture_serverless_deployment.sh && \
- 	bash zeidane_architecture_serverless_deployment.sh
+	chmod + zeidane_architecture_serverless_deployment.sh && bash zeidane_architecture_serverless_deployment.sh
 
 -	Ajouter des règles IAM aux utilisateurs en écriture uniquement, sans être en mesure de supprimer des fichiers ni accéder aux autorisations :
 
-	gsutil iam ch user:’your user mail’:roles/\
-	storage.objectCreator gs://staging-area-$DEVSHELL_PROJECT_ID 
+	gsutil iam ch user:’your user mail’:roles/storage.objectCreator gs://staging-area-$DEVSHELL_PROJECT_ID 
 
 Remplacer ‘your user mail’ par l’adresse de votre utilisateur
 
