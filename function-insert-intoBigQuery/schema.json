@@ -1,0 +1,32 @@
+[
+    {
+        "name": "id",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "code",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "alpha2",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "alpha3",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "nom_fr_fr",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "nom_en_gb",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    }
+]

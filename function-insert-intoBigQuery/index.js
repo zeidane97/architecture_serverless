@@ -14,8 +14,8 @@ const bigquery = new BigQuery();
  * @param {object} context The event metadata.
  */
 exports.loadFile = (data, context) => {
-    const datasetId = 'finance';
-    const tableId = 'transactions';
+    const datasetId = 'worldcountry';
+    const tableId = 'country';
 
     const jobMetadata = {
         skipLeadingRows: 1,
@@ -33,3 +33,4 @@ exports.loadFile = (data, context) => {
 
     console.log(`Loading from gs://${data.bucket}/${data.name} into ${datasetId}.${tableId}`);
 };
+

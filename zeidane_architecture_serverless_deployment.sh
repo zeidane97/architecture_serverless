@@ -87,7 +87,7 @@ cd ..
 #Créeons un fichier  normal qui sera uploader dans le compartiment sain-files pour tester la fonction
 
 echo "am not a corrupt file and you???" > RightFile.txt
-gsutil cp RightFile.tx gs://staging-area-$DEVSHELL_PROJECT_ID/
+gsutil cp RightFile.txt gs://staging-area-$DEVSHELL_PROJECT_ID/
 
 #Créons cette fois si un fichier corrompu :
 
@@ -95,7 +95,7 @@ gsutil cp RightFile.tx gs://staging-area-$DEVSHELL_PROJECT_ID/
 #programme DOS légitime qui est détecté comme logiciel malveillant par un logiciel antivirus.
 
 echo -e 'X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*' > eicar-infected.txt
-gsutil cp eicar-infected.txt gs://staging-area-sandbox-zagbanrin/
+gsutil cp eicar-infected.txt gs://staging-area-$DEVSHELL_PROJECT_ID/
 #Delete les 2 fichiers du repos
 rm RightFile.txt
 rm eicar-infected.txt
@@ -112,11 +112,11 @@ gcloud functions deploy loadFile --runtime nodejs8 --trigger-resource \
         gs://sain-files-$DEVSHELL_PROJECT_ID --trigger-event google.storage.object.finalize
 
 
-#Creer un dataset 'finance' dans Bigquery et une table 'transactions' avec le schema.son
-echo "user_id:STRING,amount:FLOAT" > schema.json 
-bq mk finance
-bq mk finance.transactions schema.json 
-rm schema.json 
+#Creer un dataset 'worldcountry' dans Bigquery et une table 'country' 
+bq mk worldcountry
+bq mk worldcountry.country schema.json 
+#Ajoutons le fichier sample.csv pour tester le fonctionnement : 
+gsutil cp sql-pays.csv gs://staging-area-$DEVSHELL_PROJECT_ID
 
 #Ajoutons le fichier sample.csv pour tester le fonctionnement : 
 gsutil cp sample.csv gs://staging-area-$DEVSHELL_PROJECT_ID
