@@ -1,16 +1,19 @@
-# Malware Scanner Service
+# Cloud Function that requests document scan by invoking the Malware Scanner service
 
-This repository contains the code to build a pipeline that scans documents
-uploaded to GCS for malware. It illustrates how to use App Engine Flex and Cloud
-Functions to build such a pipeline.
+Pre-reqs : See the tutorial that accompanies the code example at the following [link](https://cloud.google.com/solutions/automating-malware-scanning-for-documents-uploaded-to-cloud-storage)
+
+This directory contains the code to create a background function that is
+triggered in response to GCS events. It invokes the Malware Scanner service
+running in App Engine Flex to request the newly uploaded document to be scanned
+for malware.
 
 ## How to use this example
 
-Use the [tutorial](https://cloud.google.com/solutions/automating-malware-scanning-for-documents-uploaded-to-cloud-storage) to understand how to configure your Google Cloud Platform project to use Cloud functions and App Engine Flex.
+Use the tutorial to understand how to configure your Google Cloud Platform
+project to use Cloud functions and App Engine Flex.
 
-1.  Check it out from GitHub.
-2.  Create a new local repository and copy the files from this repo into it.
-3.  Develop and enhance it for your use case
+1.  Clone it from GitHub.
+2.  Develop and enhance it for your use case
 
 ## Quickstart
 
