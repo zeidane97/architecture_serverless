@@ -15,7 +15,10 @@ Durant le déploiement de cette solution, nous utiliserons les services google s
 -	Cloud Functions qui une plate-forme de calcul Google Cloud sans serveur basée sur des événements, qui assure un scaling automatique, une haute disponibilité et une tolérance aux pannes sans serveur à provisionner, gérer, mettre à jour ou corriger
 -	Bigquery sera mis à disposition des utilisateurs finaux avec des données mis à jour en continue. 
 -	Kubernetes Engine et compute Engine 
+
+
 Le déploiement de cette architecture est automatique et se fait comme suit : 
+
 -	Créer un projet GCP
 -	Cloner le répertoire du projet depuis git situer à l’url suivant ‘https://github.com/zeidane97/architecture_serverless.git’   
       
